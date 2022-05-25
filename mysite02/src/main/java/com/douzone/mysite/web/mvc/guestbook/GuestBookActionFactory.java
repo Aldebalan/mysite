@@ -3,7 +3,7 @@ package com.douzone.mysite.web.mvc.guestbook;
 import com.douzone.web.mvc.Action;
 import com.douzone.web.mvc.ActionFactory;
 
-public class GuestBookActionFactory extends ActionFactory {
+public class GuestbookActionFactory extends ActionFactory {
 
 	
 	
