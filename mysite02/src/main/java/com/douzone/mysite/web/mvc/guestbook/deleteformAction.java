@@ -9,11 +9,11 @@ import javax.servlet.http.HttpServletResponse;
 import com.douzone.web.mvc.Action;
 import com.douzone.web.util.WebUtil;
 
-public class deleteformAction implements Action {
+public class DeleteFormAction implements Action {
 
 	@Override
 	public void execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		WebUtil.forward(request, response, "user/deleteformaction");
+		WebUtil.forward(request, response, "user/deleteform");
 	}
 
 }

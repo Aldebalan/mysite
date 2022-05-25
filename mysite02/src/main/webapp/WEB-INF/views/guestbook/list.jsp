@@ -4,8 +4,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%
- 	List<GuestBookVo> list = new GuestBookRepository().findAll();
- %>
+List<GuestBookVo> list = new GuestBookRepository().findAll();
+%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -22,8 +22,10 @@
 					<input type="hidden" name="a" value="insert">
 					<table>
 						<tr>
-							<td>이름</td><td><input type="text" name="name"></td>
-							<td>비밀번호</td><td><input type="password" name="pass"></td>
+							<td>이름</td>
+							<td><input type="text" name="name"></td>
+							<td>비밀번호</td>
+							<td><input type="password" name="pass"></td>
 						</tr>
 						<tr>
 							<td colspan=4><textarea name="content" id="content"></textarea></td>
@@ -35,7 +37,10 @@
 				</form>
 				<ul>
 					<li>
-						<table>
+						<%
+						for (GuestBookVo vo : list) {
+						%>
+						<table width=510 border=1>
 							<tr>
 								<td>[<%=vo.getRowNum()%>]
 								</td>
@@ -48,7 +53,9 @@
 								<td colspan=4><%=vo.getMessage()%></td>
 							</tr>
 						</table>
-						<br>
+						<%
+						}
+						%> <br>
 					</li>
 				</ul>
 			</div>
