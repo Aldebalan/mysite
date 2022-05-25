@@ -32,13 +32,13 @@ public class GuestbookRepository {
 			while(rs.next()) {
 				Long no = rs.getLong(1);
 				String name = rs.getString(2);
-				String regDate = rs.getString(3);
+				String password = rs.getString(3);
 				String message = rs.getString(4);
 				
 				GuestbookVo vo = new GuestbookVo();
 				vo.setNo(no);
 				vo.setName(name);
-				vo.setRegDate(regDate);
+				vo.setPassword(password);
 				vo.setMessage(message);
 				
 				list.add(vo);
