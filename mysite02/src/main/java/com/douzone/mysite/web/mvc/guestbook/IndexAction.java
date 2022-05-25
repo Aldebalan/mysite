@@ -1,4 +1,4 @@
-package com.douzone.mysite.web.mvc.main;
+package com.douzone.mysite.web.mvc.guestbook;
 
 import java.io.IOException;
 
@@ -7,13 +7,14 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.douzone.web.mvc.Action;
-import com.douzone.web.util.WebUtill;
 
-public class DefaultAction implements Action {
+public class IndexAction implements Action {
 
 	@Override
 	public void execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		WebUtill.forward(request, response, "main/index");
+
+		
+		
 	}
 
 }

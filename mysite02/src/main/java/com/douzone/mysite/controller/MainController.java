@@ -2,7 +2,6 @@ package com.douzone.mysite.controller;
 
 import java.io.IOException;
 
-//import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -19,9 +18,6 @@ public class MainController extends HttpServlet {
 		request.setCharacterEncoding("utf-8");
 		String actionName = request.getParameter("a");
 		
-//		RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/views/main/index.jsp");
-//		rd.forward(request, response);
-		
 		ActionFactory factory = new MainActionFactory();
 		Action action = factory.getAction(actionName);
 		action.execute(request, response);
@@ -30,5 +26,4 @@ public class MainController extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		doGet(request, response);
 	}
-
 }

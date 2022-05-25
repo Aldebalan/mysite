@@ -7,7 +7,7 @@ public class MainActionFactory extends ActionFactory {
 
 	@Override
 	public Action getAction(String actionName) {
-		
+
 		return new DefaultAction();
 	}
 

@@ -28,4 +28,14 @@
     <servlet-name>UserController</servlet-name>
     <url-pattern>/user</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>GuestBookController</display-name>
+    <servlet-name>GuestBookController</servlet-name>
+    <servlet-class>com.douzone.mysite.controller.GuestBookController</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>GuestBookController</servlet-name>
+    <url-pattern>/guestbook</url-pattern>
+  </servlet-mapping>
 </web-app>

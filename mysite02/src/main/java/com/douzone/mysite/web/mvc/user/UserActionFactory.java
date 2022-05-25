@@ -10,10 +10,12 @@ public class UserActionFactory extends ActionFactory {
 	public Action getAction(String actionName) {
 		Action action = null;
 		
-		if("join".equals(actionName)) {
-//			action = new JoinAction();
-		} else if("".equals(actionName)) {
-			
+		if("joinform".equals(actionName)) {
+			action = new JoinFormAction();
+		} else if("join".equals(actionName)) {
+			action = new JoinAction();
+		} else if("joinsuccess".equals(actionName)) {
+			action = new JoinSuccess();
 		} else {
 			action = new DefaultAction();
 		}
