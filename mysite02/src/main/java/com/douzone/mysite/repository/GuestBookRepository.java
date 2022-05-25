@@ -7,119 +7,45 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
-import com.douzone.mysite.vo.GuestBookVo;
 
-public class GuestBookRepository {
+import com.douzone.mysite.vo.GuestbookVo;
 
-	public boolean insert(GuestBookVo vo) {
-		boolean result = false;
-		Connection connection = null;
-		PreparedStatement pstmt = null;
+public class GuestbookRepository {
+	public List<GuestbookVo> findAll() {
+		List<GuestbookVo> list = new ArrayList<>();
 		
-		try {
-			connection = getConnection();
-			
-			String sql =
-					"insert into guestbook " +
-					" values(null, ?, ?, ?, now()) ";
-			pstmt = connection.prepareStatement(sql);
-
-			pstmt.setString(1, vo.getName());
-			pstmt.setString(2, vo.getPassword());
-			pstmt.setString(3, vo.getMessage());
-			
-			int count = pstmt.executeUpdate();
-			result = count == 1;
-		} catch (SQLException e) {
-			System.out.println("드라이버 로딩 실패:" + e);
-		} finally {
-			try {
-				if(pstmt != null) {
-					pstmt.close();
-				}
-				if(connection != null) {
-					connection.close();
-				}
-			} catch (SQLException e) {
-				e.printStackTrace();
-			}
-		}
-		
-		return result;		
-	}
-	
-	
-	public boolean delete(GuestBookVo vo) {
-		boolean result = false;
-		Connection connection = null;
-		PreparedStatement pstmt = null;
-		
-		try {
-			connection = getConnection();
-			
-			String sql =
-					"delete from guestbook" +
-			" where no = ?" +
-			" and password = ?";
-			pstmt = connection.prepareStatement(sql);
-
-			pstmt.setLong(1, vo.getNo());
-			pstmt.setString(2, vo.getPassword());
-			
-			int count = pstmt.executeUpdate();
-			result = count == 1;
-		} catch (SQLException e) {
-			System.out.println("드라이버 로딩 실패:" + e);
-		} finally {
-			try {
-				if(pstmt != null) {
-					pstmt.close();
-				}
-				if(connection != null) {
-					connection.close();
-				}
-			} catch (SQLException e) {
-				e.printStackTrace();
-			}
-		}
-		
-		return result;		
-	}
-	
-	
-	public List<GuestBookVo> findAll() {
-		List<GuestBookVo> result = new ArrayList<>();
-		Connection connection = null;
+		Connection conn = null;
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
-		
+				
 		try {
-			connection = getConnection();
+			conn = getConnection();
 			
 			String sql =
-				"select no, name,date_format(reg_date, '%Y-%m-%d %H:%i:%s'), message" +
-				" from guestbook" + 
+				"   select no, name, date_format(reg_date, '%Y/%m/%d %H:%i:%s') as reg_date, message" +
+				"     from guestbook" +
 				" order by reg_date desc";
+			pstmt = conn.prepareStatement(sql);
 			
-			pstmt = connection.prepareStatement(sql);
 			rs = pstmt.executeQuery();
-
+			
 			while(rs.next()) {
 				Long no = rs.getLong(1);
 				String name = rs.getString(2);
-				String reg_Date = rs.getString(3);
+				String regDate = rs.getString(3);
 				String message = rs.getString(4);
 				
-				GuestBookVo vo = new GuestBookVo();
+				GuestbookVo vo = new GuestbookVo();
 				vo.setNo(no);
 				vo.setName(name);
-				vo.setRegDate(reg_Date);
+				vo.setRegDate(regDate);
 				vo.setMessage(message);
 				
-				result.add(vo);
+				list.add(vo);
 			}
+			
 		} catch (SQLException e) {
-			System.out.println("드라이버 로딩 실패:" + e);
+			System.out.println("error:" + e);
 		} finally {
 			try {
 				if(rs != null) {
@@ -128,28 +54,105 @@ public class GuestBookRepository {
 				if(pstmt != null) {
 					pstmt.close();
 				}
-				if(connection != null) {
-					connection.close();
+				if(conn != null) {
+					conn.close();
 				}
 			} catch (SQLException e) {
 				e.printStackTrace();
 			}
 		}
 		
+		return list;
+	}
+	
+	public boolean delete(GuestbookVo vo) {
+		boolean result = false;
+
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		try {
+			conn = getConnection();
+			
+			String sql =
+					" delete" +
+					"   from guestbook" +
+					"  where no=?" +
+					"    and password=?";
+			pstmt = conn.prepareStatement(sql);
+			
+			pstmt.setLong(1, vo.getNo());
+			pstmt.setString(2, vo.getPassword());
+			
+			int count = pstmt.executeUpdate();
+			result = count == 1;
+			
+		} catch (SQLException e) {
+			System.out.println("error:" + e);
+		} finally {
+			try {
+				if(pstmt != null) {
+					pstmt.close();
+				}
+				if(conn != null) {
+					conn.close();
+				}
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}		
+		
+		return result;		
+	}
+	
+	public boolean insert(GuestbookVo vo) {
+		boolean result = false;
+
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		try {
+			conn = getConnection();
+			
+			String sql =
+					" insert" +
+					"   into guestbook" +
+					" values (null, ?, ?, ?, now())";
+			pstmt = conn.prepareStatement(sql);
+			
+			pstmt.setString(1, vo.getName());
+			pstmt.setString(2, vo.getPassword());
+			pstmt.setString(3, vo.getMessage());
+			
+			int count = pstmt.executeUpdate();
+			result = count == 1;
+			
+		} catch (SQLException e) {
+			System.out.println("error:" + e);
+		} finally {
+			try {
+				if(pstmt != null) {
+					pstmt.close();
+				}
+				if(conn != null) {
+					conn.close();
+				}
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}		
+		
 		return result;
 	}
-
+	
 	private Connection getConnection() throws SQLException {
-		Connection connection = null;
-
+		Connection conn = null;
 		try {
 			Class.forName("org.mariadb.jdbc.Driver");
-			String url = "jdbc:mysql://192.168.10.31:3306/webdb?charset=utf8";
-			connection = DriverManager.getConnection(url, "webdb", "webdb");
+			String url = "jdbc:mysql://192.168.10.55:3306/webdb?characterEncoding=utf8";
+			conn = DriverManager.getConnection(url, "webdb", "webdb");
 		} catch (ClassNotFoundException e) {
 			System.out.println("드라이버 로딩 실패:" + e);
-		}
-
-		return connection;
-	}
+		} 
+		
+		return conn;
+	}	
 }

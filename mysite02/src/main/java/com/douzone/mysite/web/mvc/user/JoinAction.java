@@ -9,10 +9,9 @@ import javax.servlet.http.HttpServletResponse;
 import com.douzone.mysite.repository.UserRepository;
 import com.douzone.mysite.vo.UserVo;
 import com.douzone.web.mvc.Action;
-import com.douzone.web.util.WebUtill;
+import com.douzone.web.util.WebUtil;
 
 public class JoinAction implements Action {
-
 	@Override
 	public void execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String name = request.getParameter("name");
@@ -21,14 +20,13 @@ public class JoinAction implements Action {
 		String gender = request.getParameter("gender");
 		
 		UserVo vo = new UserVo();
-		vo.setName(name);;
+		vo.setName(name);
 		vo.setEmail(email);
 		vo.setPassword(password);
 		vo.setGender(gender);
 		
 		new UserRepository().insert(vo);
 		
-		WebUtill.redirect(request, response, request.getContextPath() + "/user?a=joinsuccess");
+		WebUtil.redirect(request, response, request.getContextPath() + "/user?a=joinsuccess");
 	}
-
 }

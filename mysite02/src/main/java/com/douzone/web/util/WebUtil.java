@@ -6,7 +6,7 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-public class WebUtill {
+public class WebUtil {
 
 	public static void forward(HttpServletRequest request, HttpServletResponse response, String path)
 			throws ServletException, IOException {
