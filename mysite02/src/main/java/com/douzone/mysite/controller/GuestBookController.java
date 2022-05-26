@@ -24,7 +24,6 @@ public class GuestBookController extends HttpServlet {
 	
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		doGet(request, response);
-//		WebUtil.forward(request, response, "guestbook/list");
 	}
 
 }

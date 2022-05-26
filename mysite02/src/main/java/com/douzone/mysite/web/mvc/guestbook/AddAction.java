@@ -1,7 +1,6 @@
 package com.douzone.mysite.web.mvc.guestbook;
 
 import java.io.IOException;
-import java.util.List;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
@@ -12,12 +11,22 @@ import com.douzone.mysite.vo.GuestBookVo;
 import com.douzone.web.mvc.Action;
 import com.douzone.web.util.WebUtil;
 
-public class InsertAction implements Action {
+public class AddAction implements Action {
+
 	@Override
 	public void execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		List<GuestBookVo> list = new GuestBookRepository().findAll();
+		String name = request.getParameter("name");
+		String password = request.getParameter("password");
+		String message = request.getParameter("message");
 		
-		request.setAttribute("list", list);
-		WebUtil.forward(request, response, "guestbook/list");
+		GuestBookVo vo = new GuestBookVo();
+		vo.setName(name);
+		vo.setPassword(password);
+		vo.setMessage(message);
+		
+		new GuestBookRepository().insert(vo);
+		WebUtil.redirect(request, response, request.getContextPath() + "/guestbook");
+
 	}
+
 }

@@ -46,20 +46,7 @@ public class UserRepository {
 		return result;
 	}
 
-	private Connection getConnection() throws SQLException {
-		Connection conn = null;
-		try {
-			Class.forName("org.mariadb.jdbc.Driver");
-			String url = "jdbc:mysql://192.168.10.31:3306/webdb?characterEncoding=utf8";
-			conn = DriverManager.getConnection(url, "webdb", "webdb");
-		} catch (ClassNotFoundException e) {
-			System.out.println("드라이버 로딩 실패:" + e);
-		}
-
-		return conn;
-	}
-
-	public UserVo findByEmailPassword(UserVo vo) {
+	public UserVo findByEmailAndPassword(UserVo vo) {
 		UserVo result = null;
 
 		Connection conn = null;
@@ -85,8 +72,8 @@ public class UserRepository {
 				String name = rs.getString(2);
 
 				result = new UserVo();
-				vo.setNo(no);
-				vo.setName(name);
+				result.setNo(no);
+				result.setName(name);
 			}
 
 		} catch (SQLException e) {
@@ -108,5 +95,17 @@ public class UserRepository {
 		}
 
 		return result;
+	}
+	private Connection getConnection() throws SQLException {
+		Connection conn = null;
+		try {
+			Class.forName("org.mariadb.jdbc.Driver");
+			String url = "jdbc:mysql://192.168.10.31:3306/webdb?characterEncoding=utf8";
+			conn = DriverManager.getConnection(url, "webdb", "webdb");
+		} catch (ClassNotFoundException e) {
+			System.out.println("드라이버 로딩 실패:" + e);
+		}
+
+		return conn;
 	}
 }
