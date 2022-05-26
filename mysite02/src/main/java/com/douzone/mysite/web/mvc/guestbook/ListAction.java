@@ -25,8 +25,8 @@ public class ListAction implements Action {
 		vo.setMessage(message);
 		
 		new GuestBookRepository().insert(vo);
-
-		WebUtil.redirect(request, response, request.getContextPath() + "/guestbook?a=list");
+		WebUtil.forward(request, response, "guestbook/list");
+		//WebUtil.redirect(request, response, request.getContextPath() + "/guestbook?a=list");
 	}
 
 }

@@ -24,7 +24,8 @@ public class InsertAction implements Action {
 		vo.setPassword(password);
 		vo.setMessage(message);
 		
-		new GuestBookRepository().insert(vo);
+		new GuestBookRepository();
+		GuestBookRepository.insert(vo);
 
 		WebUtil.redirect(request, response, request.getContextPath() + "/guestbook?a=list");
 	}

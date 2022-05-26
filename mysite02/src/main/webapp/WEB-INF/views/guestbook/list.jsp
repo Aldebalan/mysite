@@ -42,10 +42,10 @@ List<GuestBookVo> list = new GuestBookRepository().findAll();
 						%>
 						<table width=510 border=1>
 							<tr>
-								<td>[<%=vo.getRowNum()%>]
+								<td>[<%=vo.getNo()%>]
 								</td>
 								<td><%=vo.getName()%></td>
-								<td><%=vo.getRegdate()%></td>
+								<td><%=vo.getRegDate()%></td>
 								<td><a
 									href="<%=request.getContextPath() %>/guestbook?a=deleteform&no=<%=vo.getNo()%>">삭제</a></td>
 							</tr>
