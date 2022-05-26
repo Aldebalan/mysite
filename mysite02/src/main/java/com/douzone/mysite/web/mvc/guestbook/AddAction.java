@@ -23,7 +23,7 @@ public class AddAction implements Action {
 		vo.setName(name);
 		vo.setPassword(password);
 		vo.setMessage(message);
-		
+
 		new GuestBookRepository().insert(vo);
 		WebUtil.redirect(request, response, request.getContextPath() + "/guestbook");
 

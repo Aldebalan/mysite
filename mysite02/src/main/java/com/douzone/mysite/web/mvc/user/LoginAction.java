@@ -23,6 +23,7 @@ public class LoginAction implements Action {
 		vo.setPassword(password);
 		
 		UserVo authUser = new UserRepository().findByEmailAndPassword(vo);
+		System.out.println(authUser);
 		if(authUser == null) {
 			/* 로그인 실패 */
 			request.setAttribute("result", "fail");

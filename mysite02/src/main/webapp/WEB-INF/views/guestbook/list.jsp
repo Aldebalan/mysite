@@ -25,10 +25,10 @@ List<GuestBookVo> list = (List<GuestBookVo>)request.getAttribute("list");
 							<td>이름</td>
 							<td><input type="text" name="name"></td>
 							<td>비밀번호</td>
-							<td><input type="password" name="pass"></td>
+							<td><input type="password" name="password"></td>
 						</tr>
 						<tr>
-							<td colspan=4><textarea name="content" id="content"></textarea></td>
+							<td colspan=4><textarea name="message" id="content"></textarea></td>
 						</tr>
 						<tr>
 							<td colspan=4 align=right><input type="submit" VALUE=" 확인 "></td>
