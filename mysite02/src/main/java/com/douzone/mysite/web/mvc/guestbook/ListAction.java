@@ -6,7 +6,6 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.douzone.mysite.repository.GuestBookRepository;
 import com.douzone.mysite.vo.GuestBookVo;
 import com.douzone.web.mvc.Action;
 import com.douzone.web.util.WebUtil;
@@ -24,7 +23,6 @@ public class ListAction implements Action {
 		vo.setPassword(password);
 		vo.setMessage(message);
 		
-		new GuestBookRepository().insert(vo);
 		WebUtil.forward(request, response, "guestbook/list");
 		//WebUtil.redirect(request, response, request.getContextPath() + "/guestbook?a=list");
 	}

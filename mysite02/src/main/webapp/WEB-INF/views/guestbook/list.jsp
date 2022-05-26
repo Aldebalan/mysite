@@ -4,7 +4,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%
-List<GuestBookVo> list = new GuestBookRepository().findAll();
+List<GuestBookVo> list = (List<GuestBookVo>)request.getAttribute("list");
 %>
 <!DOCTYPE html>
 <html>
@@ -38,11 +38,11 @@ List<GuestBookVo> list = new GuestBookRepository().findAll();
 				<ul>
 					<li>
 						<%
-						for (GuestBookVo vo : list) {
+						for(GuestBookVo vo : list){
 						%>
 						<table width=510 border=1>
 							<tr>
-								<td>[<%=vo.getNo()%>]
+								<td>[<%=vo.getNo() %>]
 								</td>
 								<td><%=vo.getName()%></td>
 								<td><%=vo.getRegDate()%></td>
@@ -50,7 +50,7 @@ List<GuestBookVo> list = new GuestBookRepository().findAll();
 									href="<%=request.getContextPath() %>/guestbook?a=deleteform&no=<%=vo.getNo()%>">삭제</a></td>
 							</tr>
 							<tr>
-								<td colspan=4><%=vo.getMessage()%></td>
+								<td colspan=4><%=vo.getMessage().replaceAll("\n", "<br/>") %>	</td>
 							</tr>
 						</table>
 						<%
