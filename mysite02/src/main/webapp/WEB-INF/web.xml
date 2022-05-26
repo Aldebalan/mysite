@@ -39,4 +39,14 @@
     <servlet-name>GuestBookController</servlet-name>
     <url-pattern>/guestbook</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>LoginFormAction</display-name>
+    <servlet-name>LoginFormAction</servlet-name>
+    <servlet-class>com.douzone.mysite.web.mvc.user.LoginFormAction</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>LoginFormAction</servlet-name>
+    <url-pattern>/LoginFormAction</url-pattern>
+  </servlet-mapping>
 </web-app>

@@ -9,7 +9,7 @@ import javax.servlet.http.HttpServletResponse;
 import com.douzone.web.mvc.Action;
 import com.douzone.web.util.WebUtil;
 
-public class JoinSuccess implements Action {
+public class JoinSuccessAction implements Action {
 
 	@Override
 	public void execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

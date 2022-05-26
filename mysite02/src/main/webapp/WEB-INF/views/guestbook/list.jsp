@@ -38,6 +38,8 @@ List<GuestBookVo> list = (List<GuestBookVo>)request.getAttribute("list");
 				<ul>
 					<li>
 						<%
+						int count = list.size();
+						int index = 0;
 						for(GuestBookVo vo : list){
 						%>
 						<table width=510 border=1>
