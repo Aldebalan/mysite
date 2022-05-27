@@ -11,7 +11,7 @@
 <head>
 <title>mysite</title>
 <meta http-equiv="content-type" content="text/html; charset=utf-8">
-<link href="<%=request.getContextPath() %>/assets/css/guestbook.css" rel="stylesheet" type="text/css">
+<link href="${pageContext.request.contextPath }/assets/css/guestbook.css" rel="stylesheet" type="text/css">
 </head>
 <body>
 	<div id="container">
@@ -25,7 +25,7 @@
 					<input type="password" name="password">
 					<input type="submit" value="확인">
 				</form>
-				<a href="<%=request.getContextPath() %>/gusetbook?a=list">방명록 리스트</a>
+				<a href="${pageContext.request.contextPath }/gusetbook?a=list">방명록 리스트</a>
 			</div>
 		</div>
 		<c:import url="/WEB-INF/views/includes/navigation.jsp"/>
