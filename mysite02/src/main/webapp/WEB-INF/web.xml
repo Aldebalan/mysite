@@ -1,52 +1,78 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://JAVA.sun.com/xml/ns/javaee" xmlns:web="http://java.sun.com/xml/ns/javaee" xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd" version="2.5">
-  <display-name>mysite02</display-name>
-  <welcome-file-list>
-    <welcome-file>index.html</welcome-file>
-    <welcome-file>index.htm</welcome-file>
-    <welcome-file>index.jsp</welcome-file>
-    <welcome-file>default.html</welcome-file>
-    <welcome-file>default.htm</welcome-file>
-    <welcome-file>default.jsp</welcome-file>
-  </welcome-file-list>
-  <servlet>
-    <description></description>
-    <display-name>MainController</display-name>
-    <servlet-name>MainController</servlet-name>
-    <servlet-class>com.douzone.mysite.controller.MainController</servlet-class>
-  </servlet>
-  <servlet-mapping>
-    <servlet-name>MainController</servlet-name>
-    <url-pattern></url-pattern>
-  </servlet-mapping>
-  <servlet>
-    <description></description>
-    <display-name>UserController</display-name>
-    <servlet-name>UserController</servlet-name>
-    <servlet-class>com.douzone.mysite.controller.UserController</servlet-class>
-  </servlet>
-  <servlet-mapping>
-    <servlet-name>UserController</servlet-name>
-    <url-pattern>/user</url-pattern>
-  </servlet-mapping>
-  <servlet>
-    <description></description>
-    <display-name>GuestBookController</display-name>
-    <servlet-name>GuestBookController</servlet-name>
-    <servlet-class>com.douzone.mysite.controller.GuestBookController</servlet-class>
-  </servlet>
-  <servlet-mapping>
-    <servlet-name>GuestBookController</servlet-name>
-    <url-pattern>/guestbook</url-pattern>
-  </servlet-mapping>
-  <servlet>
-    <description></description>
-    <display-name>LoginFormAction</display-name>
-    <servlet-name>LoginFormAction</servlet-name>
-    <servlet-class>com.douzone.mysite.web.mvc.user.LoginFormAction</servlet-class>
-  </servlet>
-  <servlet-mapping>
-    <servlet-name>LoginFormAction</servlet-name>
-    <url-pattern>/LoginFormAction</url-pattern>
-  </servlet-mapping>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns="http://JAVA.sun.com/xml/ns/javaee"
+	xmlns:web="http://java.sun.com/xml/ns/javaee"
+	xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd"
+	version="2.5">
+	<display-name>mysite02</display-name>
+	
+	<!-- Listener -->
+
+	<!-- Filter -->
+
+	<!-- Servlet -->
+	<servlet>
+		<description></description>
+		<servlet-name>MainController</servlet-name>
+		<servlet-class>com.douzone.mysite.controller.MainController
+		</servlet-class>
+	</servlet>
+	<servlet>
+		<description></description>
+		<servlet-name>UserController</servlet-name>
+		<servlet-class>com.douzone.mysite.controller.UserController
+		</servlet-class>
+	</servlet>
+	<servlet>
+		<description></description>
+		<servlet-name>GuestBookController</servlet-name>
+		<servlet-class>com.douzone.mysite.controller.GuestBookController
+		</servlet-class>
+	</servlet>
+	<servlet>
+		<description></description>
+		<display-name>LoginFormAction</display-name>
+		<servlet-name>LoginFormAction</servlet-name>
+		<servlet-class>com.douzone.mysite.web.mvc.user.LoginFormAction
+		</servlet-class>
+	</servlet>
+
+	<!-- Servlet-mapping -->
+	<servlet-mapping>
+		<servlet-name>MainController</servlet-name>
+		<url-pattern></url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>UserController</servlet-name>
+		<url-pattern>/user</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>GuestBookController</servlet-name>
+		<url-pattern>/guestbook</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>LoginFormAction</servlet-name>
+		<url-pattern>/LoginFormAction</url-pattern>
+	</servlet-mapping>
+
+	<!-- 공통 error page -->
+	<error-page>
+		<error-code>500</error-code>
+		<location>/WEB-INF/views/error/500.jsp</location>
+	</error-page>
+
+	<error-page>
+		<error-code>404</error-code>
+		<location>/WEB-INF/views/error/404.jsp</location>
+	</error-page>
+
+	<welcome-file-list>
+		<welcome-file>index.html</welcome-file>
+		<welcome-file>index.htm</welcome-file>
+		<welcome-file>index.jsp</welcome-file>
+		<welcome-file>default.html</welcome-file>
+		<welcome-file>default.htm</welcome-file>
+		<welcome-file>default.jsp</welcome-file>
+	</welcome-file-list>
+	
 </web-app>
