@@ -1,7 +1,6 @@
 package com.douzone.mysite.web.mvc.board;
 
 import java.io.IOException;
-import java.util.List;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
@@ -14,24 +13,13 @@ import com.douzone.mysite.vo.GuestBookVo;
 import com.douzone.web.mvc.Action;
 import com.douzone.web.util.WebUtil;
 
-public class IndexAction implements Action {
+public class DeleteFormAction implements Action {
 
 	@Override
 	public void execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		WebUtil.forward(request, response, "guestbook/deleteform");
 
-		String no = request.getParameter("no");
 
-		List<BoardVo> list = new BoardRepository().findAll();
-
-		BoardVo vo = new BoardVo();
-		vo.setNo(Long.parseLong(no));
-
-		new BoardRepository().insert(vo);
-		request.setAttribute("list", list);
-		System.out.println(list);
-		System.out.println(no);
-
-		WebUtil.forward(request, response, "board/list");
 	}
 
 }

@@ -14,7 +14,6 @@ public class GuestBookActionFactory extends ActionFactory {
 			action = new DeleteAction();
 		} else if("insert".equals(actionName)) {
 			action = new AddAction();
-			
 		} else {
 			action = new IndexAction();
 		}

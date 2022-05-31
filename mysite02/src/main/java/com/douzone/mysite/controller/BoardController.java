@@ -7,9 +7,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.douzone.mysite.web.mvc.board.BoardActionFactory;
-import com.douzone.mysite.web.mvc.user.UserActionFactory;
 import com.douzone.web.mvc.Action;
-import com.douzone.web.mvc.ActionFactory;
 
 public class BoardController extends HttpServlet {
 	private static final long serialVersionUID = 1L;

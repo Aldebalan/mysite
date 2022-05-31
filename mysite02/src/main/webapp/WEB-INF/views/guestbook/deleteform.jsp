@@ -25,7 +25,7 @@
 					<input type="password" name="password">
 					<input type="submit" value="확인">
 				</form>
-				<a href="${pageContext.request.contextPath }/gusetbook?a=list">방명록 리스트</a>
+				<a href="${pageContext.request.contextPath }/board?a=list">방명록 리스트</a>
 			</div>
 		</div>
 		<c:import url="/WEB-INF/views/includes/navigation.jsp"/>

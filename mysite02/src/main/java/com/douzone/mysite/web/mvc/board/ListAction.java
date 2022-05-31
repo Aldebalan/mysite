@@ -8,29 +8,17 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.douzone.mysite.repository.BoardRepository;
-import com.douzone.mysite.repository.GuestBookRepository;
 import com.douzone.mysite.vo.BoardVo;
-import com.douzone.mysite.vo.GuestBookVo;
 import com.douzone.web.mvc.Action;
 import com.douzone.web.util.WebUtil;
 
-public class IndexAction implements Action {
+public class ListAction implements Action {
 
 	@Override
-	public void execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
-		String no = request.getParameter("no");
-
+	public void execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {		
+		
 		List<BoardVo> list = new BoardRepository().findAll();
-
-		BoardVo vo = new BoardVo();
-		vo.setNo(Long.parseLong(no));
-
-		new BoardRepository().insert(vo);
 		request.setAttribute("list", list);
-		System.out.println(list);
-		System.out.println(no);
-
 		WebUtil.forward(request, response, "board/list");
 	}
 
