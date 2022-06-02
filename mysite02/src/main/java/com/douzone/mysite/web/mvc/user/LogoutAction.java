@@ -19,6 +19,8 @@ public class LogoutAction implements Action {
 			session.removeAttribute("authUser");
 			session.invalidate();
 		}
+		
 		WebUtil.redirect(request, response, request.getContextPath());
 	}
+
 }

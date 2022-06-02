@@ -15,4 +15,5 @@ public class LoginFormAction implements Action {
 	public void execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		WebUtil.forward(request, response, "user/loginform");
 	}
+
 }

@@ -16,23 +16,38 @@ public class UpdateAction implements Action {
 
 	@Override
 	public void execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		//---------------------------------------------------------------
+		/* 접근 제어 */
 		HttpSession session = request.getSession();
+		if(session == null) {
+			WebUtil.redirect(request, response, request.getContextPath());
+			return;
+		}
+		
 		UserVo authUser = (UserVo)session.getAttribute("authUser");
-		
+		/* 접근 제어 */
+		if(authUser == null) {
+			WebUtil.redirect(request, response, request.getContextPath());
+			return;
+		}
+		//----------------------------------------------------------------
+				
+			
 		String name = request.getParameter("name");
-		String password = request.getParameter("password");
+		String password= request.getParameter("password");
 		String gender = request.getParameter("gender");
+		String email = authUser.getEmail();
 		
-		UserVo vo = new UserVo();
+		UserVo vo =new UserVo();
 		vo.setName(name);
 		vo.setPassword(password);
 		vo.setGender(gender);
-		vo.setNo(authUser.getNo());
-
+		vo.setEmail(email);
+		
 		new UserRepository().update(vo);
+		
 		authUser.setName(name);
-		WebUtil.redirect(request, response, request.getContextPath() + "/user?a=updateform");
-
+		WebUtil.redirect(request, response, request.getContextPath()+"/user?a=updateform");
 	}
 
 }

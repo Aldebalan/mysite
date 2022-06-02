@@ -13,6 +13,7 @@ import com.douzone.web.mvc.Action;
 import com.douzone.web.util.WebUtil;
 
 public class LoginAction implements Action {
+
 	@Override
 	public void execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String email = request.getParameter("email");
@@ -24,18 +25,17 @@ public class LoginAction implements Action {
 		
 		UserVo authUser = new UserRepository().findByEmailAndPassword(vo);
 		if(authUser == null) {
-			/* 로그인 실패 */
+			// 로그인 실패
 			request.setAttribute("result", "fail");
 			request.setAttribute("email", email);
 			WebUtil.forward(request, response, "user/loginform");
 			return;
-		}
-		
-		/* 로그인 처리 */
-		System.out.println("로그인 성공");
-		HttpSession session = request.getSession(true);
+		}		
+		// 로그인 처리
+		HttpSession session = request.getSession(true); 
 		session.setAttribute("authUser", authUser);
-		
+	
 		WebUtil.redirect(request, response, request.getContextPath());
 	}
+
 }

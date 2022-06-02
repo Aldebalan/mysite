@@ -10,8 +10,10 @@ import com.douzone.web.mvc.Action;
 import com.douzone.web.util.WebUtil;
 
 public class JoinFormAction implements Action {
+
 	@Override
 	public void execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		WebUtil.forward(request, response, "user/joinform");
 	}
+
 }

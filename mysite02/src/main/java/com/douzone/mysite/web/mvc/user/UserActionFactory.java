@@ -1,7 +1,5 @@
 package com.douzone.mysite.web.mvc.user;
 
-import com.douzone.mysite.web.mvc.guestbook.DeleteAction;
-import com.douzone.mysite.web.mvc.guestbook.DeleteFormAction;
 import com.douzone.mysite.web.mvc.main.DefaultAction;
 import com.douzone.web.mvc.Action;
 import com.douzone.web.mvc.ActionFactory;
@@ -17,7 +15,9 @@ public class UserActionFactory extends ActionFactory {
 		} else if("join".equals(actionName)) {
 			action = new JoinAction();
 		} else if("joinsuccess".equals(actionName)) {
-			action = new JoinSuccessAction();
+			action = new JoinSuccess();
+		} else if("login".equals(actionName)) {
+			action = new LoginAction(); 
 		} else if("loginform".equals(actionName)) {
 			action = new LoginFormAction();
 		} else if("logout".equals(actionName)) {
@@ -26,16 +26,9 @@ public class UserActionFactory extends ActionFactory {
 			action = new UpdateFormAction();
 		} else if("update".equals(actionName)) {
 			action = new UpdateAction();
-		} else if("deleteform".equals(actionName)) {
-			action = new DeleteFormAction();
-		} else if("delete".equals(actionName)) {
-			action = new DeleteAction();
-		} else if("login".equals(actionName)) {
-			action = new LoginAction();
-		} else {
+		}  else {
 			action = new DefaultAction();
 		}
-		
 		return action;
 	}
 

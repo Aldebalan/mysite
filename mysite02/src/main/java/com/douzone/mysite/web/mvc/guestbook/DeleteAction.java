@@ -12,16 +12,16 @@ import com.douzone.web.mvc.Action;
 import com.douzone.web.util.WebUtil;
 
 public class DeleteAction implements Action {
+
 	@Override
 	public void execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		String no = request.getParameter("no");
-		String password = request.getParameter("password");
+		int value = Integer.parseInt(request.getParameter("no"));
+		String password = request.getParameter("password");			
+				
+		new GuestBookRepository().delete((long)value, password);
 		
-		GuestBookVo vo = new GuestBookVo();
-		vo.setNo(Long.parseLong(no));
-		vo.setPassword(password);
-		
-		new GuestBookRepository().delete(vo);
-		WebUtil.redirect(request, response, request.getContextPath() + "/guestbook");
+		WebUtil.redirect(request, response, request.getContextPath() + "/guestbook?a=list");
+
 	}
+
 }

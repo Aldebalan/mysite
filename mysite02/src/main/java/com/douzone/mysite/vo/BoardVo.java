@@ -1,102 +1,86 @@
 package com.douzone.mysite.vo;
 
 public class BoardVo {
-	private Long no;
+	
+	private long no;
 	private String title;
 	private String contents;
-	private Long hit;
-	private String regDate;
-	private Long g_no;
-	private Long o_no;
-	private Long depth;
-	private Long userNo;
-	private String userName;
-
-	public String getUserName() {
-		return userName;
-	}
-
-	public void setUserName(String userName) {
-		this.userName = userName;
-	}
-
-	public Long getNo() {
+	private long hit;
+	private String reg_date;
+	private long g_no;
+	private long o_no;
+	private long depth;
+	private long user_no;
+	private String user_name;
+	
+	
+	public long getNo() {
 		return no;
 	}
-
-	public void setNo(Long no) {
+	public void setNo(long no) {
 		this.no = no;
 	}
-
+	
 	public String getTitle() {
 		return title;
 	}
-
 	public void setTitle(String title) {
 		this.title = title;
 	}
-
+	
 	public String getContents() {
 		return contents;
 	}
-
 	public void setContents(String contents) {
 		this.contents = contents;
 	}
-
-	public Long getHit() {
+	
+	public long getHit() {
 		return hit;
 	}
-
-	public void setHit(Long hit) {
+	public void setHit(long hit) {
 		this.hit = hit;
 	}
-
-	public String getRegDate() {
-		return regDate;
+	
+	public String getReg_date() {
+		return reg_date;
 	}
-
-	public void setRegDate(String regDate) {
-		this.regDate = regDate;
+	public void setReg_date(String reg_date) {
+		this.reg_date = reg_date;
 	}
-
-	public Long getG_no() {
+	
+	public long getG_no() {
 		return g_no;
 	}
-
-	public void setG_no(Long g_no) {
+	public void setG_no(long g_no) {
 		this.g_no = g_no;
 	}
-
-	public Long getO_no() {
+	
+	public long getO_no() {
 		return o_no;
 	}
-
-	public void setO_no(Long o_no) {
+	public void setO_no(long o_no) {
 		this.o_no = o_no;
 	}
-
-	public Long getDepth() {
+	
+	public long getDepth() {
 		return depth;
 	}
-
-	public void setDepth(Long depth) {
+	public void setDepth(long depth) {
 		this.depth = depth;
 	}
-
-	public Long getUserNo() {
-		return userNo;
+	
+	public long getUser_no() {
+		return user_no;
 	}
-
-	public void setUserNo(Long userNo) {
-		this.userNo = userNo;
+	public void setUser_no(long user_no) {
+		this.user_no = user_no;
 	}
-
-	@Override
-	public String toString() {
-		return "BoardVo [no=" + no + ", title=" + title + ", contents=" + contents + ", hit=" + hit + ", regDate="
-				+ regDate + ", g_no=" + g_no + ", o_no=" + o_no + ", depth=" + depth + ", userNo=" + userNo
-				+ ", userName=" + userName + "]";
+	
+	public String getUser_name() {
+		return user_name;
 	}
-
+	public void setUser_name(String user_name) {
+		this.user_name = user_name;
+	}
 }
