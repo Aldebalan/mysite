@@ -12,7 +12,6 @@ import org.springframework.stereotype.Repository;
 
 import com.douzone.mysite.vo.GuestBookVo;
 
-
 @Repository
 public class GuestBookRepository {
 	public List<GuestBookVo> findAll() {
@@ -26,7 +25,7 @@ public class GuestBookRepository {
 			
 			String sql =
 				" SELECT  "
-				+ "  a.name, a.password, a.message, date_format(a.regdate, '%Y-%m-%d') as regdate, a.no "
+				+ "  a.name, a.password, a.message, date_format(a.reg_date, '%Y-%m-%d') as regdate, a.no "
 				+ "FROM guestbook a "
 				+ " order by no desc";
 			pstmt = connection.prepareStatement(sql);
@@ -102,11 +101,11 @@ public class GuestBookRepository {
 		return result;
 	}
 	
-	public int delete(long value, String password) {
+	public boolean delete(long value, String password) {
 		
 		Connection connection = null;
 		PreparedStatement pstmt = null;
-		int count = 0;	
+		boolean result = false;
 		
 		try {
 			connection = getConnection();
@@ -116,7 +115,8 @@ public class GuestBookRepository {
 			pstmt.setLong(1, value);
 			pstmt.setString(2, password);			
 					
-			count = pstmt.executeUpdate();
+			int count = pstmt.executeUpdate();
+			result = count == 1 ? true : false;
 		} catch (SQLException e) {
 			System.out.println("드라이버 로딩 실패:" + e);
 		} finally {
@@ -131,7 +131,7 @@ public class GuestBookRepository {
 				e.printStackTrace();
 			}
 		}
-		return count;
+		return result;
 	}	
 	
 	private static Connection getConnection() throws SQLException{
