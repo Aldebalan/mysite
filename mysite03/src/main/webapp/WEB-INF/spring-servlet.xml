@@ -31,7 +31,7 @@
 	<!-- annotation 설정 : 자동(auto) 빈(Bean) 스캐닝(Scanning) -->
 	<context:annotation-config />
 	<context:component-scan
-		base-package="com.douzone.mysite.controller" />
+		base-package="com.douzone.mysite.controller, com.douzone.mysite.exception" />
 
 	<!-- 수동으로 설정 > 명시적 설정 <bean class="" /> -->
 
