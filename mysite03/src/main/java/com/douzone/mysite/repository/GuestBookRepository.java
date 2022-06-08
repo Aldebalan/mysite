@@ -8,6 +8,9 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.sql.DataSource;
+
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import com.douzone.mysite.excption.GuestbookRepositoryException;
@@ -15,6 +18,9 @@ import com.douzone.mysite.vo.GuestBookVo;
 
 @Repository
 public class GuestBookRepository {
+	@Autowired
+	private DataSource dataSource;
+	
 	public List<GuestBookVo> findAll() {
 		List<GuestBookVo> result = new ArrayList<>();
 		Connection connection = null;
@@ -22,7 +28,7 @@ public class GuestBookRepository {
 		ResultSet rs = null;
 		
 		try {
-			connection = getConnection();
+			connection = dataSource.getConnection();
 			
 			String sql =
 				" SELECT  "
@@ -111,7 +117,7 @@ public class GuestBookRepository {
 		boolean result = false;
 		
 		try {
-			connection = getConnection();
+			connection = dataSource.getConnection();
 				
 			String sql = " delete from guestbook where no = ? and password = ?";
 			pstmt = connection.prepareStatement(sql);			
