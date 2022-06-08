@@ -25,6 +25,5 @@ public class GuestbookService {
 	public boolean addMessage(GuestBookVo vo) {
 		return guestBookRepository.insert(vo);
 	}
-
 		
 }
