@@ -18,6 +18,7 @@ select no, name, email, gender
    from user
   where no=1;
   
+desc guestbook;
 select * from guestbook;
 
 select no, name, date_format(reg_date, '%Y/%m/%d %H:%i:%s') as reg_date, message
