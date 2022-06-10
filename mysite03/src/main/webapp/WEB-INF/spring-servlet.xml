@@ -13,7 +13,9 @@
 		http://www.springframework.org/schema/beans/spring-beans.xsd
 		http://www.springframework.org/schema/context
 		http://www.springframework.org/schema/context/spring-context.xsd">
-
+	<!-- Auto Proxy -->
+	<aop:aspectj-autoproxy />
+	
 	<!-- validator, conversionService, messageConverter를 자동으로 등록 -->
 	<mvc:annotation-driven />
 
@@ -27,12 +29,11 @@
 		<property name="suffix" value=".jsp" />
 	</bean>
 
-
+	<!-- 수동으로 설정 > 명시적 설정 <bean class="" /> -->
+	
 	<!-- annotation 설정 : 자동(auto) 빈(Bean) 스캐닝(Scanning) -->
 	<context:annotation-config />
 	<context:component-scan
 		base-package="com.douzone.mysite.controller, com.douzone.mysite.exception" />
-
-	<!-- 수동으로 설정 > 명시적 설정 <bean class="" /> -->
 
 </beans>
