@@ -27,5 +27,12 @@ public class UserService {
 	public void updateUser(UserVo vo) {
 		userRepository.update(vo);
 	}
+
+	public UserVo getUser(String email, String password) {
+		UserVo vo = new UserVo();
+		vo.setEmail(email);
+		vo.setPassword(password);
+		return getUser(vo);
+	}
 	
 }
