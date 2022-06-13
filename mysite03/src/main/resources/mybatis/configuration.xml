@@ -5,6 +5,8 @@
 		<typeAlias type="com.douzone.mysite.vo.UserVo" alias="uservo" />
 		<typeAlias type="com.douzone.mysite.vo.GuestBookVo" alias="guestbookvo" />
 		<typeAlias type="com.douzone.mysite.vo.BoardVo" alias="boardvo" />
+		<typeAlias type="com.douzone.mysite.vo.GalleryVo" alias="galleryvo" />
+		<typeAlias type="com.douzone.mysite.vo.SiteVo" alias="sitevo" />
     </typeAliases>	
 	
 	<mappers>
