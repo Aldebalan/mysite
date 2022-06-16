@@ -1,8 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <configuration>
-
-	<appender name="consoleAppender"
-		class="ch.qos.logback.core.ConsoleAppender">
+	<appender name="consoleAppender" class="ch.qos.logback.core.ConsoleAppender">
 		<encoder>
 			<charset>UTF-8</charset>
 			<Pattern>
@@ -11,17 +9,14 @@
 		</encoder>
 	</appender>
 
-	<appender name="fileAppender"
-		class="ch.qos.logback.core.rolling.RollingFileAppender">
+	<appender name="fileAppender" class="ch.qos.logback.core.rolling.RollingFileAppender">
 		<file>/mysite-logs/exception.log</file>
-		<encoder
-			class="ch.qos.logback.classic.encoder.PatternLayoutEncoder">
+		<encoder class="ch.qos.logback.classic.encoder.PatternLayoutEncoder">
 			<Pattern>
 				%d{HH:mm:ss.SSS} [%thread] %-5level %logger{5} - %msg%n
 			</Pattern>
 		</encoder>
-		<rollingPolicy
-			class="ch.qos.logback.core.rolling.FixedWindowRollingPolicy">
+		<rollingPolicy class="ch.qos.logback.core.rolling.FixedWindowRollingPolicy">
 			<FileNamePattern>/mysite-logs/exception.%i.log.zip</FileNamePattern>
 			<MinIndex>1</MinIndex>
 			<MaxIndex>10</MaxIndex>
@@ -32,18 +27,12 @@
 		</triggeringPolicy>
 	</appender>
 
-
-	<logger name="com.douzone.logex2" level="debug"
-		additivity="false">
-		<appender-ref ref="fileAppender2" />
-	</logger>
-
 	<logger name="com.douzone.mysite.exception" level="error" additivity="false">
-		<appender-ref ref="consoleAppender" />
-		<appender-ref ref="fileAppender" />
-	</logger>
-
-	<root level="debug">
+            <appender-ref ref="consoleAppender" />
+            <appender-ref ref="fileAppender" />
+    </logger>
+	
+	<root level="info">
 		<appender-ref ref="consoleAppender" />
 	</root>
 

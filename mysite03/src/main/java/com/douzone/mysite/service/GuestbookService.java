@@ -5,16 +5,16 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.douzone.mysite.repository.GuestBookRepository;
-import com.douzone.mysite.vo.GuestBookVo;
+import com.douzone.mysite.repository.GuestbookRepository;
+import com.douzone.mysite.vo.GuestbookVo;
 
 @Service
 public class GuestbookService {
 	
 	@Autowired
-	private GuestBookRepository guestBookRepository;
+	private GuestbookRepository guestBookRepository;
 	
-	public List<GuestBookVo> getMessage(){
+	public List<GuestbookVo> getMessage(){
 		return guestBookRepository.findAll();
 	}
 	
@@ -22,7 +22,7 @@ public class GuestbookService {
 		return guestBookRepository.delete(no, password);
 	}
 	
-	public boolean addMessage(GuestBookVo vo) {
+	public boolean addMessage(GuestbookVo vo) {
 		return guestBookRepository.insert(vo);
 	}
 		

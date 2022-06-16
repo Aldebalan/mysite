@@ -11,7 +11,7 @@
 		order by reg_date desc		
 		]]>
 	</select>
-
+	
 	<delete id="delete" parameterType="map">
 		<![CDATA[
 		delete
@@ -20,7 +20,7 @@
 		   and password=#{password }
 		]]>
 	</delete>
-
+	
 	<insert id="insert" parameterType="guestbookvo">
 		<![CDATA[
 		insert
@@ -33,5 +33,5 @@
 			]]>
 		</selectKey>
 	</insert>
-
-</mapper> 
+	
+</mapper>
