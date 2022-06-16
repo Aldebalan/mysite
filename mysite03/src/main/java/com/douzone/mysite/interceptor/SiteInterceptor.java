@@ -9,6 +9,7 @@ import org.springframework.web.servlet.handler.HandlerInterceptorAdapter;
 import com.douzone.mysite.service.SiteService;
 import com.douzone.mysite.vo.SiteVo;
 
+@SuppressWarnings("deprecation")
 public class SiteInterceptor extends HandlerInterceptorAdapter {
 	
 	@Autowired
