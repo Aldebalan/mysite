@@ -9,6 +9,7 @@ import org.springframework.web.servlet.handler.HandlerInterceptorAdapter;
 
 import com.douzone.mysite.vo.UserVo;
 
+@SuppressWarnings("deprecation")
 public class AuthInterceptor extends HandlerInterceptorAdapter {
 
 	@Override
