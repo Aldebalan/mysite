@@ -13,20 +13,23 @@
 		http://www.springframework.org/schema/beans/spring-beans.xsd
 		http://www.springframework.org/schema/context
 		http://www.springframework.org/schema/context/spring-context.xsd">
-		
 	<!-- Auto Proxy -->
 	<aop:aspectj-autoproxy />
-	
+
 	<!-- validator, conversionService, messageConverter를 자동으로 등록 -->
 	<mvc:annotation-driven>
-		<!-- Argumnet Resolver -->
+		<!-- Argument Resolver -->
 		<mvc:argument-resolvers>
 			<bean class="com.douzone.mysite.security.AuthUserHandlerMethodArgumentResolver" />
 		</mvc:argument-resolvers>
 	</mvc:annotation-driven>
 
-	<!--Interceptors -->
+	<!-- Interceptors -->
 	<mvc:interceptors>
+		<mvc:interceptor>
+			<mvc:mapping path="/**" />
+			<bean class="com.douzone.mysite.interceptor.SiteInterceptor"/>
+		</mvc:interceptor>		
 		<mvc:interceptor>
 			<mvc:mapping path="/user/auth"/>
 			<bean class="com.douzone.mysite.security.LoginInterceptor"/>
@@ -43,10 +46,22 @@
 			<bean class="com.douzone.mysite.security.AuthInterceptor"/>
 		</mvc:interceptor>
 	</mvc:interceptors>
-
+	
 	<!-- 서블릿 컨테이너의 디폴트 서블릿 위임 핸들러 -->
-	<mvc:default-servlet-handler />
+	<mvc:default-servlet-handler/>
 
+	<!-- MVC Resource Mapping -->
+	<mvc:resources mapping="/assets/gallery/**" location="file:/mysite-uploads/"  />
+	
+	<!-- Message Resource -->
+	<bean id="messageSource" class="org.springframework.context.support.ResourceBundleMessageSource">
+	   <property name="basenames">
+	      <list>
+			<value>messages/messages_ko</value>
+	      </list>
+	   </property>
+	</bean>
+	
 	<!-- ViewResolver 설정 -->
 	<bean id="viewResolver" class="org.springframework.web.servlet.view.InternalResourceViewResolver">
 		<property name="viewClass" value="org.springframework.web.servlet.view.JstlView" />
@@ -54,11 +69,14 @@
 		<property name="suffix" value=".jsp" />
 	</bean>
 
-	<!-- 수동으로 설정 > 명시적 설정 <bean class="" /> -->
+	<!-- Mutipart Resolver -->
+	<bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
+	    <property name="maxUploadSize" value="52428800" />
+	    <!-- property name="maxInMemorySize" value="1024000" /-->
+	    <property name="defaultEncoding" value="utf-8" />
+	</bean>
 	
-	<!-- annotation 설정 : 자동(auto) 빈(Bean) 스캐닝(Scanning) -->
+	<!-- 어노테이션 설정: 자동(auto) 빈(Bean) 스캐닝(Scanning) -->
 	<context:annotation-config />
-	<context:component-scan
-		base-package="com.douzone.mysite.controller, com.douzone.mysite.exception" />
-
+	<context:component-scan base-package="com.douzone.mysite.controller, com.douzone.mysite.exception" />
 </beans>
