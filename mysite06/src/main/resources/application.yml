@@ -1,0 +1,61 @@
+# spring configuration
+spring:
+   # devtools - live reload
+   devtools:
+      livereload:
+         enabled: true
+   # mvc
+   mvc:
+      static-path-pattern: /assets/**
+      throw-exception-if-no-handler-found: true
+      view:
+         prefix: /WEB-INF/views/
+         suffix: .jsp
+   web:
+      resources:
+         static-locations: classpath:/static/, file:/mysite-uploads/
+
+   # message resource(i18n)
+   messages:
+      always-message-format: true
+      basename: messages/messages_ko
+      encoding: utf-8
+   # multipart
+   servlet:
+      multipart:
+         enabled: true
+         max-file-size: 10MB
+         max-request-size: 50MB
+   # aop(@EnableAspectJAutoProxy)
+   aop:
+      auto: true
+      proxy-target-class: true
+   # datasource
+   datasource:
+      driver-class-name: org.mariadb.jdbc.Driver
+      url: jdbc:mysql://192.168.10.31:3306/webdb?characterEncoding=utf8
+      username: webdb
+      password: webdb
+      hikari:
+        minimum-idle: 10
+        maximum-pool-size: 20
+
+
+# mybatis configuration
+mybatis:
+   config-location: classpath:mybatis/configuration.xml
+
+
+# server configuration
+server:
+   port: 8080
+   servlet:
+      context-path: /mysite06
+      encoding:
+         charset: utf-8
+         enabled: true
+
+
+# logging configuration
+loggin:
+   config: classpath:logback.xml
