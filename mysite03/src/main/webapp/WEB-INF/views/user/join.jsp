@@ -10,6 +10,83 @@
 <title>mysite</title>
 <meta http-equiv="content-type" content="text/html; charset=utf-8">
 <link href="${pageContext.request.contextPath }/assets/css/user.css" rel="stylesheet" type="text/css">
+<script src="${pageContext.request.contextPath }/assets/js/jquery/jquery-3.6.0.js"></script>
+<script>
+$(function(){
+	$("#join-form").submit(function() {
+		event.preventDefault();
+		
+		// 1. 이름 유효성(empty) 체크
+		if($("#name").val() === '') {
+			alert("이름이 비어있습니다.");
+			$("#name").focus();
+			return;
+		}
+		
+		// 2. 이메일 유효성 체크
+		if($("#email").val() === '') {
+			alert("이메일이 비어있습니다.");
+			$("#email").focus();
+			return;
+		}
+
+		// 3. 이메일 중복 체크 유무
+		if($("img-checkemail").is(":visible")) {
+			alert("이메일 중복을 확인해 주세요.");
+			return;
+		}
+		
+		// 4. 비밀번호 유효성(empty) 체크
+		if($("#password").val() === '') {
+			alert("비밀번호가 비어있습니다.");
+			$("#password").focus();
+			return;
+		}
+		
+		// 5. 약관 동의 유무
+		if(!$("#agree-prov").is(":checked")) {
+			alert("약관 동의를 체크해 주세요.");
+			return;
+		}
+		
+		// 6. ok
+		this[0].submit();
+		
+	});
+	
+	$("#btn-checkemail").click(function(){
+		var email = $("#email").val();
+		if(email === '') {
+			return;
+		}
+		
+		$.ajax({
+			url: "${pageContext.request.contextPath }/api/user/existemail?email=" + email,
+			type: "get",
+			dataType: "json",
+			error: function(xhr, status, e) {
+				console.error(status, e);
+			},
+			success: function(response) {
+				if(response.result !== 'success') {
+					console.error(response.message);
+					return;
+				}
+				
+				if(response.data) {		// exists!
+					alert("존재하는 이메일입니다. 다른 이메일을 사용하세요.");
+					$("#email").val('').focus();
+					return;
+				}
+				
+				// not exist
+				$("#btn-checkemail").hide();
+				$("#img-checkemail").show();
+			}
+		});
+	}); 	
+});
+</script>
 </head>
 <body>
 	<div id="container">
@@ -35,7 +112,8 @@
 
 					<label class="block-label" for="email">이메일</label>
 					<form:input path="email" />
-					<input type="button" value="중복체크">
+					<input type="button" id='btn-checkemail' value="중복체크" >
+					<img id="img-checkemail" align="absmiddle" style="width:24px; vertical-align:bottom; display:none;" src="${pageContext.request.contextPath }/assets/images/check.png" />
 					<p style="text-align:left; padding:0; color: red">
 						<form:errors path="email" />
 					</p>
